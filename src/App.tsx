@@ -1,4 +1,3 @@
-
 // import functionalities
 import React from 'react';
 import './App.css';
@@ -58,7 +57,7 @@ export default function App() {
   );
 
 	// create state variable for the wallet key
-  const [walletKey, setWalletKey] = useState<PhantomProvider | undefined>(
+  const [walletKey, setWalletKey] = useState<String | undefined>(
   undefined
   );
 
@@ -88,7 +87,25 @@ export default function App() {
 				// update walletKey to be the public key
         setWalletKey(response.publicKey.toString());
       } catch (err) {
-      // { code: 4001, message: 'User rejected the request.' }
+          console.log(err);
+      }
+    }
+  };
+
+  /**
+   * @description disconnects wallet if it exists.
+	 * This function is called when the disconnect wallet button is clicked
+   */
+  const disconnectWallet = async () => {
+    // @ts-ignore
+    const { solana } = window;
+
+		// checks if phantom wallet exists
+    if (solana) {
+      try {
+				// ADD DISCONNECT LOGIC HERE
+      } catch (err) {
+          console.log(err);
       }
     }
   };
@@ -111,8 +128,25 @@ export default function App() {
         Connect Wallet
       </button>
         )}
-        {provider && walletKey && <p>Connected account</p> }
-
+        {provider && walletKey && (
+            <div>
+              <p>{/*FOR WALLET ADDRESS*/}</p>
+              <button
+                style={{
+                  fontSize: "16px",
+                  padding: "15px",
+                  fontWeight: "bold",
+                  borderRadius: "5px",
+                  position: "absolute",
+                  top: "28px",
+                  right: "28px"
+                }}
+                onClick={disconnectWallet}
+              >
+                Disconnect Wallet
+              </button>
+            </div>
+        )}
         {!provider && (
           <p>
             No provider found. Install{" "}
