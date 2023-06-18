@@ -4,4 +4,17 @@
 
 tasks:
   - name: Dev Server
-    init: npm install -D --yes && brew install solana
+    init: |
+      sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
+      export PATH="/home/gitpod/.local/share/solana/install/active_release/bin:$PATH"
+      eval $(gp env -e PATH=$HOME/.local/share/solana/install/active_release/bin:$PATH)
+      npm install
+ports:
+  - port: 1024
+    onOpen: ignore
+  - port: 8899
+    onOpen: ignore
+  - port: 8900
+    onOpen: ignore
+  - port: 9900
+    onOpen: ignore
