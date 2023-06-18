@@ -114,7 +114,7 @@ export default function App() {
 
   /**
    * @description prompts user to connect wallet if it exists.
-   * This function is called when the connect wallet button is clicked
+   * This function is called when the Connect to Phantom Wallet button is clicked
    */
   const connectWallet = async () => {
     // @ts-ignore
@@ -155,7 +155,7 @@ export default function App() {
 
   /**
    * @description transfer SOL from sender wallet to connected wallet.
-   * This function is called when the transfer button is clicked
+   * This function is called when the Transfer SOL to Phantom Wallet button is clicked
    */
   const transferSol = async () => {    
     
