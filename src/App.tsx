@@ -182,7 +182,7 @@ export default function App() {
       SystemProgram.transfer({
         fromPubkey: senderKeypair!.publicKey,
         toPubkey: receiverPublicKey!,
-        lamports: LAMPORTS_PER_SOL/100
+        lamports: LAMPORTS_PER_SOL
       })
     );
 
